@@ -40,5 +40,5 @@ options '/api/delay' do
   status 204
   headers "Access-Control-Allow-Origin" => "*"
   headers "Access-Control-Allow-Headers" => "content-type"
-  ""
+  nil
 end
