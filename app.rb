@@ -11,7 +11,7 @@ get '/' do
   ]
 end
 
-# fetch("http://localhost:3000/api/delay?sec=1").then(a => a.text()).then(console.log)
+# fetch("http://localhost:3000/api/delay?sec=1", {headers:{"Content-Type": "application/json"}}).then(a => a.text()).then(console.log)
 get '/api/delay' do
   # inputs
   delay_sec = params["sec"]&.to_i || 1
@@ -19,7 +19,7 @@ get '/api/delay' do
 
   # headers
   content_type 'application/json'
-  headers "Access-Control-Allow-Origin" => "https://yusungkim.com"
+  headers "Access-Control-Allow-Origin" => "*"
 
   # delay
   sleep delay_sec
@@ -34,4 +34,11 @@ get '/api/delay' do
     "inputs" => params,
     "usage" => "/api/timeout?sec=1&status=200"
   }.to_json
+end
+
+options '/api/delay' do
+  status 204
+  headers "Access-Control-Allow-Origin" => "*"
+  headers "Access-Control-Allow-Headers" => "content-type"
+  ""
 end
