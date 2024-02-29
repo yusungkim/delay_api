@@ -3,9 +3,10 @@ GEM
   specs:
     daemons (1.4.1)
     eventmachine (1.2.7)
+    multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.6.4)
+    rack (2.2.8.1)
     rack-protection (3.0.5)
       rack
     ruby2_keywords (0.0.5)
@@ -14,6 +15,12 @@ GEM
       rack (~> 2.2, >= 2.2.4)
       rack-protection (= 3.0.5)
       tilt (~> 2.0)
+    sinatra-contrib (3.0.5)
+      multi_json
+      mustermann (~> 3.0)
+      rack-protection (= 3.0.5)
+      sinatra (= 3.0.5)
+      tilt (~> 2.0)
     thin (1.8.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -21,11 +28,11 @@ GEM
     tilt (2.1.0)
 
 PLATFORMS
-  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
-  eventmachine
   sinatra
+  sinatra-contrib
   thin
 
 BUNDLED WITH
