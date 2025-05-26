@@ -19,11 +19,11 @@ $ docker-compose up
 ローカルで起動したサーバーをインターネットからアクセスできます。
 
 ```bash
-# ローカルの3000ポートをインターネットに公開
-$ ngrok http 3000
+# ローカルの6000ポートをインターネットに公開
+$ ngrok http 6000
 
 # ...(中略)
-# Forwarding                    https://fc70-119-173-192-139.jp.ngrok.io -> http://localhost:3000
+# Forwarding                    https://fc70-119-173-192-139.jp.ngrok.io -> http://localhost:6000
 
 # 上の「Forwarding」に記載されているurlを使ってローカルのAPIサーバーにrequest
 $ curl https://fc70-119-173-192-139.jp.ngrok.io/api/delay
@@ -91,6 +91,6 @@ services:
     build:
       context: .
     ports:
-#      - 3000:3000  # original
-      - 3001:3000   # 3001を利用したい場合
+#      - 6000:6000  # original
+      - 3001:6000   # 3001を利用したい場合
 ```

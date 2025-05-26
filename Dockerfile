@@ -4,10 +4,17 @@ WORKDIR /usr/src/app
 
 COPY Gemfile* .
 
+# 빌드 도구와 필요한 라이브러리 설치
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    pkg-config \
+    curl
 RUN bundle install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 6000
 
-CMD ["ruby", "app.rb", "-p 3000"]
+CMD ["ruby", "app.rb", "-p 6000"]
+# CMD ["rackup", "-p", "6000", "-o", "0.0.0.0"]

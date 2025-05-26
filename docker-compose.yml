@@ -5,7 +5,7 @@ services:
     build:
       context: .
     ports:
-      - 6000:3000
+      - 6000:6000
     volumes:
       - ./:/usr/src/app
     tty: true

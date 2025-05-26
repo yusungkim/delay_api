@@ -2,6 +2,7 @@ require 'sinatra'
 require "sinatra/reloader"
 
 set :bind, '0.0.0.0'
+set :host_authorization, { permitted_hosts: [] }
 
 get '/' do
   [
@@ -9,6 +10,15 @@ get '/' do
     { "Access-Control-Allow-Origin" => "*" },
     '<h1>Simple and fast web/api server. using sinatra & thin</h1><h2>Usage: /api/delay?sec=3</h2>'
   ]
+end
+
+get '/journalInfo' do
+	# response body
+	{
+		"status" => 200,
+		"params" => params,
+		"headers" => request.env.select { |k, v| k.start_with?("HTTP_") }
+	}.to_json
 end
 
 # {:bbno=>"20240410100875,20240410100866,20240410100863,20240123100576,20240410100860,20240410100857,20240410100855,20240410100253,20240410100851,20240410100807,20240410100927"}
